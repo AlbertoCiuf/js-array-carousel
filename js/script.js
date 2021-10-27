@@ -1,4 +1,4 @@
-const items = [
+const images = [
   'img/01.jpg',
   'img/02.jpg',
   'img/03.jpg',
@@ -22,8 +22,9 @@ const text = [
   'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,'
 ];
 
-const sliderLeft = document.querySelector('.container .slider .slider-left')
+const sliderLeft = document.querySelector('.container .slider .slider-left');
 // console.log(slider);
+const sliderList = document.querySelector('.container .slider .slider-list');
 const leftItem = document.getElementsByClassName('item');
 //console.log(item);
 const listItem = document.getElementsByClassName('list-item');
@@ -33,15 +34,34 @@ const next = document.getElementById('next');
 let contatore = 0;
 // console.log(item[contatore]);
 
-for (let i = 0; i < items.length; i++) {
+for (let i = 0; i < images.length; i++) {
+  
+  //creo div con img
   const item = document.createElement('div');
   item.className += 'item';
+  item.innerHTML = `<img src="${images[i]}" alt="" />`;
+
   if (i === contatore) {
     item.classList.add('active');
   }
-  item.innerHTML = `<img src=${items[i]} alt=""`;
-  console.log(item);
+
+
+  //creo div con testi
+  const itemInfo = document.createElement('div');
+  const itemTitle = document.createElement('div');
+  const itemText = document.createElement('div');
+
+  itemInfo.className += 'item-info';
+  itemTitle.className += 'item-title';
+  itemText.className += 'item-text';
+
+  itemText.innerHTML = text[i];
+  itemTitle.innerHTML = title[i];
+
+  itemInfo.append(itemTitle, itemText);
   sliderLeft.append(item);
+  item.append(itemInfo);
+
 }
 
 
