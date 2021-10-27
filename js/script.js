@@ -22,8 +22,9 @@ const text = [
   'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,'
 ];
 
-
-const item = document.getElementsByClassName('item');
+const sliderLeft = document.querySelector('.container .slider .slider-left')
+// console.log(slider);
+const leftItem = document.getElementsByClassName('item');
 //console.log(item);
 const listItem = document.getElementsByClassName('list-item');
 const prev = document.getElementById('prev');
@@ -32,27 +33,37 @@ const next = document.getElementById('next');
 let contatore = 0;
 // console.log(item[contatore]);
 
+for (let i = 0; i < items.length; i++) {
+  const item = document.createElement('div');
+  item.className += 'item';
+  if (i === contatore) {
+    item.classList.add('active');
+  }
+  item.innerHTML = `<img src=${items[i]} alt=""`;
+  console.log(item);
+  sliderLeft.append(item);
+}
+
+
+//cambiamento immagine al click 
 prev.addEventListener('click', function(){
-  item[contatore].classList.remove('active');
+  leftItem[contatore].classList.remove('active');
   listItem[contatore].classList.remove('selected');
   contatore--;
   if (contatore < 0) {
-    contatore = item.length-1;
+    contatore = leftItem.length-1;
   }
-  item[contatore].classList.add('active');
+  leftItem[contatore].classList.add('active');
   listItem[contatore].classList.add('selected');
-  
-
 });
 
 next.addEventListener('click', function(){
-  item[contatore].classList.remove('active');
+  leftItem[contatore].classList.remove('active');
   listItem[contatore].classList.remove('selected');
   contatore++;
-  if (contatore > item.length - 1) {
+  if (contatore > leftItem.length - 1) {
     contatore = 0;
   }
-  item[contatore].classList.add('active');
+  leftItem[contatore].classList.add('active');
   listItem[contatore].classList.add('selected');
-
 });
