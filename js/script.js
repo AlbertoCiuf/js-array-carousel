@@ -25,6 +25,7 @@ const text = [
 
 const item = document.getElementsByClassName('item');
 //console.log(item);
+const listItem = document.getElementsByClassName('list-item');
 const prev = document.getElementById('prev');
 const next = document.getElementById('next');
 
@@ -33,19 +34,25 @@ let contatore = 0;
 
 prev.addEventListener('click', function(){
   item[contatore].classList.remove('active');
+  listItem[contatore].classList.remove('selected');
   contatore--;
   if (contatore < 0) {
     contatore = item.length-1;
   }
   item[contatore].classList.add('active');
+  listItem[contatore].classList.add('selected');
+  
 
 });
 
 next.addEventListener('click', function(){
   item[contatore].classList.remove('active');
+  listItem[contatore].classList.remove('selected');
   contatore++;
   if (contatore > item.length - 1) {
     contatore = 0;
   }
   item[contatore].classList.add('active');
+  listItem[contatore].classList.add('selected');
+
 });
