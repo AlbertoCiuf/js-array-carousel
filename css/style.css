@@ -68,18 +68,18 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 350px;
-  overflow: hidden;
 }
 
 .slider-list .list-item {
   height: calc(100% / 5);
+  width: 100%;
 }
 
 .slider-list .list-item img {
   width: 100%;
   filter: brightness(0.4);
   display: block;
+  height: 100%;
 }
 
 .slider-list .list-item.selected img {
