@@ -28,14 +28,14 @@ const sliderList = document.querySelector('.container .slider .slider-list');
 const leftItem = document.getElementsByClassName('item');
 //console.log(item);
 const listItem = document.getElementsByClassName('list-item');
-const prev = document.getElementById('prev');
-const next = document.getElementById('next');
+
 
 let contatore = 0;
 // console.log(item[contatore]);
 
 for (let i = 0; i < images.length; i++) {
-  
+ 
+//parte sinistra
   //creo div con img
   const item = document.createElement('div');
   item.className += 'item';
@@ -62,8 +62,29 @@ for (let i = 0; i < images.length; i++) {
   sliderLeft.append(item);
   item.append(itemInfo);
 
+
+//parte destra
+  
+  const rightItem = document.createElement('div');
+  rightItem.className += 'list-item';
+  rightItem.innerHTML = `<img src="${images[i]}" alt="" />`;
+  sliderList.append(rightItem);
+
+  if (i === contatore) {
+    rightItem.classList.add('selected');
+  }
+
 }
 
+//creo costanti arrow prev e next
+const prev = document.createElement('div');
+prev.className += 'prev';
+prev.innerHTML = '&uarr;';
+const next = document.createElement('div');
+next.className += 'next';
+next.innerHTML = '&darr;';
+
+sliderList.append(prev, next);
 
 //cambiamento immagine al click 
 prev.addEventListener('click', function(){
